@@ -1,9 +1,9 @@
 import { useState, useMemo } from 'react';
+
 import NewTaskForm from './components/NewTaskForm';
 import TaskList from './components/TaskList';
 import Footer from './components/Footer';
 import './App.css';
-
 
 function App() {
   // Создаем состояние для задач, с начальным значением пустого массива
@@ -14,11 +14,11 @@ function App() {
   // Функция для добавления новой задачи
   const addTask = (description) => {
     const newTask = {
-      id: Date.now(),              // Генерация уникального ID на основе текущего времени
-      description,                 // Описание задачи
-      createdAt: new Date(),       // Время создания задачи
-      completed: false,            // Статус задачи (не завершена)
-      isEditing: false,            // Статус редактирования (по умолчанию - не в режиме редактирования)
+      id: Date.now(), // Генерация уникального ID на основе текущего времени
+      description, // Описание задачи
+      createdAt: new Date(), // Время создания задачи
+      completed: false, // Статус задачи (не завершена)
+      isEditing: false, // Статус редактирования (по умолчанию - не в режиме редактирования)
     };
     // Обновляем список задач, добавляя новую задачу
     setTasks((prevTasks) => [...prevTasks, newTask]);
@@ -27,8 +27,8 @@ function App() {
   // Функция для переключения состояния задачи (активна/завершена)
   const toggleTask = (id) => {
     setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === id ? { ...task, completed: !task.completed } : task // Переключаем статус задачи
+      prevTasks.map(
+        (task) => (task.id === id ? { ...task, completed: !task.completed } : task) // Переключаем статус задачи
       )
     );
   };
@@ -46,8 +46,8 @@ function App() {
   // Функция для перехода в режим редактирования задачи
   const editTask = (id) => {
     setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === id ? { ...task, isEditing: true } : task // Включаем режим редактирования для задачи
+      prevTasks.map(
+        (task) => (task.id === id ? { ...task, isEditing: true } : task) // Включаем режим редактирования для задачи
       )
     );
   };
@@ -65,8 +65,8 @@ function App() {
   // Функция для отмены редактирования задачи
   const cancelEdit = (id) => {
     setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === id ? { ...task, isEditing: false } : task // Выход из режима редактирования без сохранения изменений
+      prevTasks.map(
+        (task) => (task.id === id ? { ...task, isEditing: false } : task) // Выход из режима редактирования без сохранения изменений
       )
     );
   };
@@ -90,7 +90,7 @@ function App() {
       <section className="main">
         {/* Компонент для отображения списка задач */}
         <TaskList
-          tasks={filteredTasks}  // Передаем отфильтрованные задачи
+          tasks={filteredTasks} // Передаем отфильтрованные задачи
           onToggleTask={toggleTask} // Функция для переключения состояния задачи
           onRemoveTask={removeTask} // Функция для удаления задачи
           onEditTask={editTask} // Функция для редактирования задачи

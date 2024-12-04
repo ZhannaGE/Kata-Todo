@@ -34,4 +34,3 @@ TasksFilter.propTypes = {
 };
 
 export default TasksFilter;
-

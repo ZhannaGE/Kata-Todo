@@ -22,13 +22,51 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "format:js": "prettier-eslint --write '**/*.js'",
+    "format:css": "prettier-stylelint --write '**/*.css'",
+    "lint:style": "stylelint '**/*.css' --fix",
     "format": "prettier --write ."
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
-    ]
+      "react-app/jest",
+      "airbnb",
+      "prettier"
+    ],
+    "plugins": [
+      "react",
+      "prettier",
+      "jsx-a11y",
+      "import"
+    ],
+    "rules": {
+      "prettier/prettier": "error",
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            ".js",
+            ".jsx"
+          ]
+        }
+      ],
+      "import/order": [
+        "error",
+        {
+          "groups": [
+            "builtin",
+            "external",
+            "internal",
+            "parent",
+            "sibling",
+            "index"
+          ],
+          "newlines-between": "always"
+        }
+      ],
+      "react/prop-types": "off"
+    }
   },
   "browserslist": {
     "production": [
@@ -58,12 +96,29 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
-    "prettier": "^3.4.1"
+    "prettier": "^3.4.2",
+    "prettier-eslint": "^16.3.0",
+    "prettier-stylelint": "^0.4.2",
+    "stylelint-prettier": "^5.0.2"
   },
   "lint-staged": {
     "*.js": [
       "eslint --fix",
       "prettier --write"
+    ],
+    "*.css": [
+      "stylelint --fix",
+      "prettier-stylelint --write"
     ]
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-idiomatic-order",
+      "./node_modules/prettier-stylelint/config.js"
+    ],
+    "rules": {
+      "indentation": 4,
+      "string-quotes": "single"
+    }
   }
 }
