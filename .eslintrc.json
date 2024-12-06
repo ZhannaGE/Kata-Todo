@@ -7,8 +7,6 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "prettier",
-    "plugin:prettier/recommended",
     "plugin:import/errors",
     "plugin:import/warnings"
   ],
@@ -19,24 +17,18 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "prettier", "import"],
+  "plugins": ["react", "import"],
   "rules": {
-    "prettier/prettier": [
-      "error",
-      {
-        "semi": true
-      }
-    ],
     "indent": ["error", 2],
-    "linebreak-style": [0, "unix"],
+    "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "react/react-in-jsx-scope": "off",
-    "react/prop-types": 0,
-    "import/no-unresolved": [2, { "caseSensitive": false }],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prop-types": "off",
+    "import/no-unresolved": ["error", { "caseSensitive": false }],
+    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
     "import/order": [
-      2,
+      "error",
       {
         "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
         "newlines-between": "always"
